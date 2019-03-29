@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  //  ** variables
   let userGuess = []
   const computerRandomCode = []
   let counter = 0
@@ -8,15 +7,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const userGuessTwo = document.querySelector('#userGuessTwo')
   const userGuessThree = document.querySelector('#userGuessThree')
   const form = document.querySelector('form')
-
-
-
-  // let resultsArray = []
-  // let allresultsSquaresDom = document.querySelectorAll('.resultsContainer > div')
-  // let resultAreaOneDOM = document.querySelector('#resultAreaOne')
-  // let resultAreaTwoDOM = document.querySelector('#resultAreaTwo')
-  // let resultAreaThreeDOM = document.querySelector('#resultAreaThree')
-
+  const resultAreaOneDOM = document.querySelector('#resultAreaOne')
+  const resultAreaTwoDOM = document.querySelector('#resultAreaTwo')
+  const resultAreaThreeDOM = document.querySelector('#resultAreaThree')
 
 
   function getComputerRandomCodeFunction() {              // computer random Three digit number ***********
@@ -24,18 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const number = Math.floor(Math.random() * 3) + 1    //create a randow number between 1 and 3
       computerRandomCode.push(number)                     //  add the number to the computerRandomCode array..
       counter++                                           // increase counter by one at the end of the loop to move on to next number
-
     }
     console.log('computer random code ' + computerRandomCode)        // log computerRandomCode.. which is now an array
-
   }
   getComputerRandomCodeFunction()                         // call getComputerRandomCodeFunction
-  // *******************************************
 
+  //****************************************************************************************************************
 
-
-  // ** fisher-Yates shuffle function
-  function shuffle(array) {
+  function shuffle(array) {    // ** fisher-Yates shuffle function
     let i = array.length
     let j
     let temp
@@ -49,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return array
   }
 
-  // user input and game play
+  // USER INPUT / RESULT / RESULT SHUFFLE  *********************************************************************
 
   form.addEventListener('submit', (e) => {                //add a 'submit' event listener to the userGuess form
     e.preventDefault()
@@ -64,12 +53,41 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (computerRandomCode.includes(element)) {        // if computerRandomCode includes the current element in any location
         return 'white'
       } else
-        return 'Null'
+        return 'nope'
     })
 
+    console.log('the result is ' + colorResult)
+    console.log('the shuffled result is ' + shuffle(colorResult))
 
-    console.log(colorResult)
-    console.log('the shuffled array is ' + shuffle(colorResult))
+    const shuffledResult = shuffle(colorResult)
+
+    resultAreaOneDOM.innerText = shuffledResult[0]
+    resultAreaTwoDOM.innerText = shuffledResult[1]
+    resultAreaThreeDOM.innerText = shuffledResult[2]
+
+
+    // ***************    change color via class list change based on inner text
+    // Result box one
+    if (resultAreaOneDOM.innerText === 'red') {
+      resultAreaOneDOM.classList.add('red')
+    } else if (resultAreaOneDOM.innerText === 'white') {
+      resultAreaOneDOM.classList.add('white')
+    }
+
+    // Result box two
+    if (resultAreaTwoDOM.innerText === 'red') {
+      resultAreaTwoDOM.classList.add('red')
+    } else if (resultAreaTwoDOM.innerText === 'white') {
+      resultAreaTwoDOM.classList.add('white')
+    }
+
+    // Result box three
+    if (resultAreaThreeDOM.innerText === 'red') {
+      resultAreaThreeDOM.classList.add('red')
+    } else if (resultAreaThreeDOM.innerText === 'white') {
+      resultAreaThreeDOM.classList.add('white')
+    }
+
 
   })                                                      // event listener closing tag
 
