@@ -7,3 +7,24 @@
 body {
   background-color: dodgerblue;
 }
+
+
+.resultsBoxes {
+  width: 100px;
+  height: 100px;
+  background-color: Grey;
+  border: 2px solid black;
+  display: inline-block;
+  margin-top: 50px;
+  text-align: center;
+}
+
+
+
+.red {
+  background-color: red;
+}
+
+.white {
+  background-color: white;
+}
