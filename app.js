@@ -13,9 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // let resultsArray = []
   // let allresultsSquaresDom = document.querySelectorAll('.resultsContainer > div')
-  // let whiteCounter = 0
-  // let redCounter = 0
-  // let input = document.querySelector('input')
   // let resultAreaOneDOM = document.querySelector('#resultAreaOne')
   // let resultAreaTwoDOM = document.querySelector('#resultAreaTwo')
   // let resultAreaThreeDOM = document.querySelector('#resultAreaThree')
@@ -37,7 +34,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+  // ** fisher-Yates shuffle function
+  function shuffle(array) {
+    let i = array.length
+    let j
+    let temp
 
+    while(--i > 0){
+      j = Math.floor(Math.random() * (i+1))
+      temp = array[j]
+      array[j] = array[i]
+      array[i] = temp
+    }
+    return array
+  }
 
   // user input and game play
 
@@ -47,17 +57,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     console.log('user guess ' + userGuess)                  // log userGuess.. which is now an array
 
-    const colorResult = userGuess.map((element, index) => {
+    const colorResult = userGuess.map((element, index) => {     // .map move over each element and index in the userGuess array
 
-      if (element === computerRandomCode[index]) {
+      if (element === computerRandomCode[index]) {              // if current element equals computerRandomCode, (current index)
         return 'red'
-      } else if (computerRandomCode.includes(element)) {
+      } else if (computerRandomCode.includes(element)) {        // if computerRandomCode includes the current element in any location
         return 'white'
       } else
         return 'Null'
     })
 
+
     console.log(colorResult)
+    console.log('the shuffled array is ' + shuffle(colorResult))
 
   })                                                      // event listener closing tag
 
