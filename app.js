@@ -1,6 +1,45 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  console.log('js loaded')
+  //  ** create variables
+  //  - make an empty array for userGuess & computerRandomCode
+  let userGuess = []
+  let userGuessOne = document.querySelector('#userGuessOne')
+  let userGuessTwo = document.querySelector('#userGuessTwo')
+  let userGuessThree = document.querySelector('#userGuessThree')
+  let computerRandomCode = []
+  let counter = 0
+  const form = document.querySelector('form')
+  let input = document.querySelector('input')
+
+
+
+
+  function getComputerRandomCodeFunction() {              // computer random Three digit number ***********
+
+    while(counter < 3 ){                                  // while counter is less than three...
+      const number = Math.floor(Math.random() * 3) + 1    //create a randow number between 1 and 3
+      computerRandomCode.push(number)                     //  add the number to the computerRandomCode array..
+      counter++                                           // increase counter by one at the end of the loop to move on to next number
+
+    }
+    console.log('computer random code ' + computerRandomCode)        // log computerRandomCode.. which is now an array
+
+  }
+  getComputerRandomCodeFunction()                         // call getComputerRandomCodeFunction
+  // ********************************************
+
+
+
+  // user input and result
+
+  form.addEventListener('submit', (e) => {                //add a 'submit' event listener to the userGuess form
+    e.preventDefault()
+    userGuess = [parseInt(userGuessOne.value), parseInt(userGuessTwo.value), parseInt(userGuessThree.value)]  // add each value to the userGuess array
+
+    console.log('user guess ' + userGuess)                  // log userGuess.. which is now an array
+
+
+  })                                                      // event listener closing tag
 
 
 
@@ -9,35 +48,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-})
 
 
 
-/*
+
+
+
+
+
+
+
+
+  /*
 NOTES
-
-** create variables
-  - make an empty array for
-  const userGuess = []
-  - make an empty array for ComputerRandomCode
-  const ComputerRandomCode = []
-
 
 
 ** create DOM target areas
 
-
-
-
-** create computerRandomCode
-
-    - perform a (for) loop 3 times
-      - on each pass..
-      - pick a random number between 1 and 3
-      - add the number to the array computerRandomCode
-
-    - computerRandomCode should contain a 3 number array
-    - console.log(computerRandomCode)
 
 
 ** create UserGuess code
@@ -95,3 +122,14 @@ NOTES
 
 
 */
+
+
+
+
+
+
+
+
+
+
+})  //main DOM closing tag
