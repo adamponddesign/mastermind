@@ -3,38 +3,77 @@
   box-sizing: border-box;
 }
 
-
-body {
-  background-color: dodgerblue;
-  text-align: center;
+main {
+  width: 900px;
+  /* display: flex; */
 }
 
 
-.resultsBoxes {
-  width: 50px;
-  height: 25px;
-  background-color: Grey;
-  border: 2px solid black;
-  display: inline-block;
-  margin-top: 10px;
-  text-align: center;
+
+.resultsContainer {
+  display: flex;
 }
 
-input {
-  font-size: 20px;
+.resultsContainer div {
+  width: 20px;
+  height: 20px;
+  border: 1px solid black;
+  margin: 10px;
 }
 
-.red {
-  background-color: red;
-}
+
 
 .white {
   background-color: white;
 }
 
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.userSelectButtons {
+  display: flex;
+  align-items: center;
+
+}
+
+.userSelectButtons div {
+  height: 60px;
+  width: 60px;
+  margin: 10px;
+}
+
+.submitGuess {
+  height: 60px;
+  width: 60px;
+  margin: 10px;
+  border: 1px solid black;
+  display: flex;
+}
+
+
+
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.black {
+  background-color: black;
+}
+
+.userReceive {
+  display: flex;
+}
+
+.userReceive div {
+  height: 60px;
+  width: 60px;
+  border: 1px solid black;
+  margin: 10px;
 }
