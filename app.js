@@ -7,54 +7,79 @@ document.addEventListener('DOMContentLoaded', () => {
   const userGuessTwo = document.getElementById('userGuessTwo')
   const userGuessThree = document.getElementById('userGuessThree')
   const userGuessFour = document.getElementById('userGuessFour')
-  const userSelectButtonsDOM = document.querySelector('.userSelectButtons')
-  const userReceiveDOM = document.querySelector('.userReceive') // array of 4 divs
-  const user = document.querySelector('.user')
+
+
+  const allSpaces = document.querySelectorAll('.gameBoard div')     // target all the div within the gameBoard container div
+  const userSelectButtonsDOM = document.querySelectorAll('.userSelectButtons div')
+
+
   const submitGuess = document.querySelector('.submitGuess')
-
-
-
-  // const form = document.querySelector('form')
   const resultAreaOneDOM = document.querySelector('#resultAreaOne')
   const resultAreaTwoDOM = document.querySelector('#resultAreaTwo')
   const resultAreaThreeDOM = document.querySelector('#resultAreaThree')
   const resultAreaFourDOM = document.querySelector('#resultAreaFour')
+  const winner = document.querySelector('#winner')
+
+  let currentColorDOM = allSpaces[0]    // set currentColorDOM to the first item index[0] of the userReceiveColorsDOM
 
 
 
 
-  function getComputerRandomCodeFunction() {              // computer random Three digit number ***********
+
+
+
+  let currentSpace = allSpaces[0]
+
+  // HIGHLIGHT CURRENT ACTIVE ROW **********************************************************************************
+  let rowIndex = 0                                  // create a variable for where the row index will start..e.g. the first row
+  const rows = document.querySelectorAll('.row')    // grab all rows and save to variable
+  let currentRow = rows[rowIndex]                   // new variable --- of all the rows saved in 'rows', what is the index of the current row
+  currentRow.classList.add('active')                // to that 'currentRow' add a class of active
+
+
+
+  allSpaces.forEach(element => {                      // for each space div within the 'allspaces' array
+    element.addEventListener('click', (e) => {        //  add a click eventlistener
+      if (!e.target.parentNode.classList.contains('active')) {      // if the parent of the element clicked DOESN'T have the class of active..
+        return false                                                // do nothing
+      } else {
+        currentSpace = e.target                                   // else return the info from the button clicked -- save it to currentSpace variable
+        currentSpace.classList.add('active')                      // add a class of 'active' to the 'currentSpace' identified above
+      }
+    })
+  })
+
+
+  // THIS GETS THE CLASS NAME FROM THE USER SELECT BUTTON CLICKED, AND SETS IT TO THE TARGET ELEMENT SET ABOVE (currentSpace's class name)
+  userSelectButtonsDOM.forEach(element => {                 // for each element in the userSelectButtons array (4 empty divs)
+    element.addEventListener('click', (e) => {                //add a 'click' event to each div
+      const userPick = e.target.className                     // add the classname of the button clicked to the variable userPickOne
+      currentSpace.className = userPick                     // add the button clicked's classname (userPick) to the currentSpace's classname
+    })
+  })
+
+
+
+
+
+
+
+
+
+
+
+  // computer random Four digit number *************************************************************
+  function getComputerRandomCodeFunction() {
     const choices = ['red','yellow','blue','black']
-    while(counter < 4 ){                                  // while counter is less than three...
-      const number = Math.floor(Math.random() * 4)    //create a randow number between 1 and 3
-      computerRandomCode.push(choices[number])                     //  add the number to the computerRandomCode array..
+    while(counter < 4 ){                                  // while counter is less than four...
+      const number = Math.floor(Math.random() * 4)        //create a randow number between 1 and 4
+      computerRandomCode.push(choices[number])            //  add the number to the computerRandomCode array..
       counter++                                           // increase counter by one at the end of the loop to move on to next number
     }
   }
   getComputerRandomCodeFunction()
-
-  console.log('computer random code ' + computerRandomCode)                      // call getComputerRandomCodeFunction
-
-
-
-  //****************************************************************************************************************
-
-  // addEventListener syntax -----   document.addEventListener(event, function, useCapture)
-
-  userSelectButtonsDOM.addEventListener('click', (e) => {                //add a 'click' event listener to the userSelectButtonsDOM
-    const userPickOne = e.target.className
-    userGuessOne.className = userPickOne
-
-    // const userPickTwo = e.target.className
-    // userGuessTwo.className = userPickTwo
-    //
-    // const userPickThree = e.target.className
-    // userGuessThree.className = userPickThree
-    //
-    // const userPickFour = e.target.className
-    // userGuessFour.className = userPickFour
-
-  })
+  console.log('computer random code ' + computerRandomCode)    // call getComputerRandomCodeFunction
+  // ************************************************************************************************
 
 
 
@@ -63,26 +88,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  // event listener to remove the class of the userGuess when clicked -- should work for all four buttons
-  userReceiveDOM.addEventListener('click', () => {
-    userGuessOne.className = ''
-    // userGuessTwo.className = ''
-  })
 
 
 
 
 
 
-  // eventlistener on submitGuess to add all class names to userGuess array
+
+
+
+
+
+
+  // eventlistener on submitGuess to
+  //        add all class names to userGuess array
+  //        determine color result
+  //        shuffle the color result
   submitGuess.addEventListener('click', () => {
-    userGuess = [userGuessOne.className,userGuessTwo.className,userGuessThree.className,userGuessFour.className]
+    userGuess = [userGuessOne.className,userGuessTwo.className,userGuessThree.className,userGuessFour.className]   // add all class names to userGuess array
     console.log('the user guess is ' + userGuess)
 
 
-
+    //       determine color result
     const colorResult = userGuess.map((element, i) => {     // .map move over each element and index in the userGuess array
-
       if (element === computerRandomCode[i]) {              // if current element equals computerRandomCode, (current index)
         return 'red'
       } else if (computerRandomCode.includes(element)) {        // if computerRandomCode includes the current element in any location
@@ -90,11 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
       } else
         return ''
     })
-
     console.log('the result is ' + colorResult)
-
-
-
+    //       shuffle the color result
     const shuffledResult = shuffle(colorResult)
     console.log('the shuffled result is ' + shuffle(colorResult))
 
@@ -103,6 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
     resultAreaThreeDOM.innerText = shuffledResult[2]
     resultAreaFourDOM.innerText = shuffledResult[3]
 
+    if (resultAreaOneDOM === 'red' && resultAreaTwoDOM === 'red' && resultAreaThreeDOM === 'red' && resultAreaFourDOM === 'red') {
+      winner.className = ''
+    }
 
     // ***************    change color via class list change based on inner text
     // Result box one
@@ -143,13 +171,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-
-
-
-
-
+    // winner box when 4 reds
+    if (resultAreaOneDOM.classList.contains('red') &&
+        resultAreaTwoDOM.classList.contains('red') &&
+        resultAreaThreeDOM.classList.contains('red') &&
+        resultAreaFourDOM.classList.contains('red')
+    ) {
+      winner.classList.remove('hidden')
+    }
 
 
   })
@@ -158,18 +187,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  function shuffle(array) {    // ** fisher-Yates shuffle function
+  // ********** fisher-Yates shuffle function
+  function shuffle(array) {
     let i = array.length
     let j
     let temp
@@ -182,72 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     return array
   }
-
-
-
-
-
-  // // USER INPUT / RESULT / RESULT SHUFFLE  *********************************************************************
-  //
-  // form.addEventListener('submit', (e) => {                //add a 'submit' event listener to the userGuess form
-  //   e.preventDefault()
-  //   userGuess = [parseInt(userGuessOne.value), parseInt(userGuessTwo.value), parseInt(userGuessThree.value)]  // add each value to the userGuess array
-  //
-  //   console.log('user guess ' + userGuess)                  // log userGuess.. which is now an array
-  //
-  //   const colorResult = userGuess.map((element, index) => {     // .map move over each element and index in the userGuess array
-  //
-  //     if (element === computerRandomCode[index]) {              // if current element equals computerRandomCode, (current index)
-  //       return 'red'
-  //     } else if (computerRandomCode.includes(element)) {        // if computerRandomCode includes the current element in any location
-  //       return 'white'
-  //     } else
-  //       return 'nope'
-  //   })
-  //
-  //   console.log('the result is ' + colorResult)
-  //   console.log('the shuffled result is ' + shuffle(colorResult))
-  //
-  //   const shuffledResult = shuffle(colorResult)
-  //
-  //   resultAreaOneDOM.innerText = shuffledResult[0]
-  //   resultAreaTwoDOM.innerText = shuffledResult[1]
-  //   resultAreaThreeDOM.innerText = shuffledResult[2]
-  //
-  //
-  //   // ***************    change color via class list change based on inner text
-  //   // Result box one
-  //   if (resultAreaOneDOM.innerText === 'red') {
-  //     resultAreaOneDOM.classList.add('red')
-  //   } else if (resultAreaOneDOM.innerText === 'white') {
-  //     resultAreaOneDOM.classList.add('white')
-  //   }
-  //
-  //   // Result box two
-  //   if (resultAreaTwoDOM.innerText === 'red') {
-  //     resultAreaTwoDOM.classList.add('red')
-  //   } else if (resultAreaTwoDOM.innerText === 'white') {
-  //     resultAreaTwoDOM.classList.add('white')
-  //   }
-  //
-  //   // Result box three
-  //   if (resultAreaThreeDOM.innerText === 'red') {
-  //     resultAreaThreeDOM.classList.add('red')
-  //   } else if (resultAreaThreeDOM.innerText === 'white') {
-  //     resultAreaThreeDOM.classList.add('white')
-  //   }
-  //
-  //
-  // })                                                      // event listener closing tag
-
-
-
-
-
-
-
-
-
+  // *******************************************
 
 
 
