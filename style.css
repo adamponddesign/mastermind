@@ -5,7 +5,7 @@
 
 main {
   width: 900px;
-  /* display: flex; */
+  background-color: lightgrey;
 }
 
 
@@ -35,8 +35,9 @@ main {
 }
 
 .userSelectButtons div {
-  height: 60px;
-  width: 60px;
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
   margin: 10px;
 }
 
@@ -49,7 +50,9 @@ main {
 }
 
 
-
+.nope {
+  background-color: white;
+}
 
 .red {
   background-color: red;
@@ -72,6 +75,7 @@ main {
 }
 
 .userReceive div {
+  border-radius: 50%;
   height: 60px;
   width: 60px;
   border: 1px solid black;

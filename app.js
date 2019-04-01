@@ -65,7 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // event listener to remove the class of the userGuess when clicked -- should work for all four buttons
   userReceiveDOM.addEventListener('click', () => {
-    user.className = ''
+    userGuessOne.className = ''
+    // userGuessTwo.className = ''
   })
 
 
@@ -87,11 +88,58 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (computerRandomCode.includes(element)) {        // if computerRandomCode includes the current element in any location
         return 'white'
       } else
-        return 'nope'
+        return ''
     })
 
     console.log('the result is ' + colorResult)
 
+
+
+    const shuffledResult = shuffle(colorResult)
+    console.log('the shuffled result is ' + shuffle(colorResult))
+
+    resultAreaOneDOM.innerText = shuffledResult[0]
+    resultAreaTwoDOM.innerText = shuffledResult[1]
+    resultAreaThreeDOM.innerText = shuffledResult[2]
+    resultAreaFourDOM.innerText = shuffledResult[3]
+
+
+    // ***************    change color via class list change based on inner text
+    // Result box one
+    if (resultAreaOneDOM.innerText === 'red') {
+      resultAreaOneDOM.classList.add('red')
+      resultAreaOneDOM.innerText = ''
+    } else if (resultAreaOneDOM.innerText === 'white') {
+      resultAreaOneDOM.classList.add('white')
+      resultAreaOneDOM.innerText = ''
+    }
+
+    // Result box two
+    if (resultAreaTwoDOM.innerText === 'red') {
+      resultAreaTwoDOM.classList.add('red')
+      resultAreaTwoDOM.innerText = ''
+    } else if (resultAreaTwoDOM.innerText === 'white') {
+      resultAreaTwoDOM.classList.add('white')
+      resultAreaTwoDOM.innerText = ''
+    }
+
+    // Result box three
+    if (resultAreaThreeDOM.innerText === 'red') {
+      resultAreaThreeDOM.classList.add('red')
+      resultAreaThreeDOM.innerText = ''
+    } else if (resultAreaThreeDOM.innerText === 'white') {
+      resultAreaThreeDOM.classList.add('white')
+      resultAreaThreeDOM.innerText = ''
+    }
+
+    // Result box four
+    if (resultAreaFourDOM.innerText === 'red') {
+      resultAreaFourDOM.classList.add('red')
+      resultAreaFourDOM.innerText = ''
+    } else if (resultAreaFourDOM.innerText === 'white') {
+      resultAreaFourDOM.classList.add('white')
+      resultAreaFourDOM.innerText = ''
+    }
 
 
 
@@ -105,33 +153,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -218,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
   //
   //
   // })                                                      // event listener closing tag
-  //
+
 
 
 
