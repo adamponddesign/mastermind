@@ -3,38 +3,88 @@ document.addEventListener('DOMContentLoaded', () => {
   let userGuess = []
   const computerRandomCode = []
   let counter = 0
-  const userGuessOne = document.getElementById('userGuessOne')
-  const userGuessTwo = document.getElementById('userGuessTwo')
-  const userGuessThree = document.getElementById('userGuessThree')
-  const userGuessFour = document.getElementById('userGuessFour')
 
+  const userGuessOne = document.querySelector('.userGuessOne')
+  const userGuessTwo = document.querySelector('.userGuessTwo')
+  const userGuessThree = document.querySelector('.userGuessThree')
+  const userGuessFour = document.querySelector('.userGuessFour')
+
+  const resultAreaOneDOM = document.querySelector('.resultAreaOne')
+  const resultAreaTwoDOM = document.querySelector('.resultAreaTwo')
+  const resultAreaThreeDOM = document.querySelector('.resultAreaThree')
+  const resultAreaFourDOM = document.querySelector('.resultAreaFour')
 
   const allSpaces = document.querySelectorAll('.gameBoard div')     // target all the div within the gameBoard container div
   const userSelectButtonsDOM = document.querySelectorAll('.userSelectButtons div')
 
-
   const allSubmitBoxes = document.querySelectorAll('.submitGuess')  // all divs with the class of .submitGuess
-  // let submitIndex = 0
-  // const
-
-
-  const resultAreaOneDOM = document.querySelector('#resultAreaOne')
-  const resultAreaTwoDOM = document.querySelector('#resultAreaTwo')
-  const resultAreaThreeDOM = document.querySelector('#resultAreaThree')
-  const resultAreaFourDOM = document.querySelector('#resultAreaFour')
   const winner = document.querySelector('#winner')
-
-
-
 
   let currentSpace = allSpaces[0]
 
-  // HIGHLIGHT CURRENT ACTIVE ROW **********************************************************************************
+  const allResultsAreas = document.querySelectorAll('.resultsContainer')
+
+  // HIGHLIGHT CURRENT ACTIVE ROW
   let rowIndex = 0                                  // create a variable for where the row index will start..e.g. the first row
   const rows = document.querySelectorAll('.row')    // grab all rows and save to variable
   let currentRow = rows[rowIndex]                   // new variable --- of all the rows saved in 'rows', what is the index of the current row
   currentRow.classList.add('activeRow')                // to that 'currentRow' add a class of active
+  let currentResultsArea = allResultsAreas[rowIndex]
 
+
+
+
+
+
+
+
+
+
+
+
+  // FUNCTIONS *******************************************************************
+  function shuffle(array) {  // fisher-Yates shuffle function
+    let i = array.length
+    let j
+    let temp
+
+    while(--i > 0){
+      j = Math.floor(Math.random() * (i+1))
+      temp = array[j]
+      array[j] = array[i]
+      array[i] = temp
+    }
+    return array
+  }
+
+  function getComputerRandomCodeFunction() {   // computer random Four digit number *******************************
+    const choices = ['red','yellow','blue','black']
+    while(counter < 4 ){                                  // while counter is less than four...
+      const number = Math.floor(Math.random() * 4)        //create a randow number between 1 and 4
+      computerRandomCode.push(choices[number])            //  add the number to the computerRandomCode array..
+      counter++                                           // increase counter by one at the end of the loop to move on to next number
+    }
+  }
+  getComputerRandomCodeFunction()
+  console.log('computer random code ' + computerRandomCode)    // call getComputerRandomCodeFunction
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // EVENT LISTENERS *************************************************
 
   // listener on every space... only to work if the containing parent has the class of activeRow
   allSpaces.forEach(element => {                      // for each space div within the 'allspaces' array
@@ -54,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     element.addEventListener('click', (e) => {                //add a 'click' event to each div
       const userPick = e.target.className                     // add the classname of the button clicked to the variable userPickOne
       currentSpace.className = userPick                     // add the button clicked's classname (userPick) to the currentSpace's classname
+
     })
   })
 
@@ -67,52 +118,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  // computer random Four digit number *************************************************************
-  function getComputerRandomCodeFunction() {
-    const choices = ['red','yellow','blue','black']
-    while(counter < 4 ){                                  // while counter is less than four...
-      const number = Math.floor(Math.random() * 4)        //create a randow number between 1 and 4
-      computerRandomCode.push(choices[number])            //  add the number to the computerRandomCode array..
-      counter++                                           // increase counter by one at the end of the loop to move on to next number
-    }
-  }
-  getComputerRandomCodeFunction()
-  console.log('computer random code ' + computerRandomCode)    // call getComputerRandomCodeFunction
-  // ************************************************************************************************
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // eventlistener on submitGuess to
-  //        add all class names to userGuess array
-  //        determine color result
-  //        shuffle the color result
-
-
-  allSubmitBoxes.forEach(element => {
-
+  allSubmitBoxes.forEach(element => {         // on submit
     element.addEventListener('click', (e) => {
       if (!e.target.parentNode.classList.contains('activeRow')) {      // if the parent of the element clicked DOESN'T have the class of active..
         return false                                                // do nothing
-      } else {
-        userGuess = [userGuessOne.className,userGuessTwo.className,userGuessThree.className,userGuessFour.className]   // add all class names to userGuess array
-        console.log('the user guess is ' + userGuess)
+      } else {                            // if the row is active...
+
+
+        const userGuessArray = Array.from(currentRow.children)
+
+
+
+        // **********************************************
+
+
+        userGuess = [userGuessArray[0].className,userGuessArray[1].className,userGuessArray[2].className,userGuessArray[3].className]   // add all class names to userGuess array
+        // console.log('the user guess is ' + userGuess)
+
+        console.log('user guess is ' + userGuess)
+        // ***********************************************
+
+
+
 
 
         //       determine color result
@@ -127,56 +156,32 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('the result is ' + colorResult)
         //       shuffle the color result
         const shuffledResult = shuffle(colorResult)
-        console.log('the shuffled result is ' + shuffle(colorResult))
-
-        resultAreaOneDOM.innerText = shuffledResult[0]
-        resultAreaTwoDOM.innerText = shuffledResult[1]
-        resultAreaThreeDOM.innerText = shuffledResult[2]
-        resultAreaFourDOM.innerText = shuffledResult[3]
-
-        if (resultAreaOneDOM === 'green' && resultAreaTwoDOM === 'green' && resultAreaThreeDOM === 'green' && resultAreaFourDOM === 'green') {
-          winner.className = ''
-        }
-
-        // ***************    change color via class list change based on inner text
-        // Result box one
-        if (resultAreaOneDOM.innerText === 'green') {
-          resultAreaOneDOM.classList.add('green')
-          resultAreaOneDOM.innerText = ''
-        } else if (resultAreaOneDOM.innerText === 'orange') {
-          resultAreaOneDOM.classList.add('orange')
-          resultAreaOneDOM.innerText = ''
-        }
-
-        // Result box two
-        if (resultAreaTwoDOM.innerText === 'green') {
-          resultAreaTwoDOM.classList.add('green')
-          resultAreaTwoDOM.innerText = ''
-        } else if (resultAreaTwoDOM.innerText === 'orange') {
-          resultAreaTwoDOM.classList.add('orange')
-          resultAreaTwoDOM.innerText = ''
-        }
-
-        // Result box three
-        if (resultAreaThreeDOM.innerText === 'green') {
-          resultAreaThreeDOM.classList.add('green')
-          resultAreaThreeDOM.innerText = ''
-        } else if (resultAreaThreeDOM.innerText === 'orange') {
-          resultAreaThreeDOM.classList.add('orange')
-          resultAreaThreeDOM.innerText = ''
-        }
-
-        // Result box four
-        if (resultAreaFourDOM.innerText === 'green') {
-          resultAreaFourDOM.classList.add('green')
-          resultAreaFourDOM.innerText = ''
-        } else if (resultAreaFourDOM.innerText === 'orange') {
-          resultAreaFourDOM.classList.add('orange')
-          resultAreaFourDOM.innerText = ''
-        }
+        console.log('the shuffled result is ' + shuffledResult)
 
 
-        // winner box when 4 reds
+
+
+
+
+
+
+        // send the shuffledResult to the currentResultsArea
+        const results = Array.from(currentResultsArea.children)   // make an array containing the children of currentResultsArea
+
+
+        results.forEach((element, index) => {       // for each item in the results array
+          if(shuffledResult[index]) {
+            element.classList.add(shuffledResult[index])
+          }
+          // first element add classlist of shuffledResult index 1
+          // second element add classlist of shuffledResult index 2
+          // because one of the shuffledResult's may be ''... we have to add an 'if' condition
+          // if shuffledResult index 1 it truthy.. carryout the code.
+          // if shuffledResult index 2 is empty this will not pass the condition, and so the code will not be run
+        })
+
+
+
         if (resultAreaOneDOM.classList.contains('green') &&
         resultAreaTwoDOM.classList.contains('green') &&
         resultAreaThreeDOM.classList.contains('green') &&
@@ -187,40 +192,14 @@ document.addEventListener('DOMContentLoaded', () => {
           currentRow.classList.remove('activeRow')
           rowIndex++
           currentRow = rows[rowIndex]
-          currentRow.classList.add('activeRow')
+          currentRow.classList.add('activeRow')             // update activeRow
+          currentResultsArea = allResultsAreas[rowIndex]    // update currentResultsArea
+          
         }
 
       }
     })
   })
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // ********** fisher-Yates shuffle function
-  function shuffle(array) {
-    let i = array.length
-    let j
-    let temp
-
-    while(--i > 0){
-      j = Math.floor(Math.random() * (i+1))
-      temp = array[j]
-      array[j] = array[i]
-      array[i] = temp
-    }
-    return array
-  }
-  // *******************************************
 
 
 
