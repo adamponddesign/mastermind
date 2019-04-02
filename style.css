@@ -86,14 +86,15 @@ h1 {
   border: 1px solid black;
   display: flex;
   background-color: black;
-}
-
-.submitGuess p {
   text-align: center;
   font-size: 11px;
   margin-top: 5px;
   color: white;
+
+  align-items: center;
+  justify-content: center;
 }
+
 
 
 /**************** ACTIVE CLASS *******************/
