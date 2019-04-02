@@ -20,12 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultAreaFourDOM = document.querySelector('#resultAreaFour')
   const winner = document.querySelector('#winner')
 
-  let currentColorDOM = allSpaces[0]    // set currentColorDOM to the first item index[0] of the userReceiveColorsDOM
-
-
-
-
-
 
 
   let currentSpace = allSpaces[0]
@@ -34,17 +28,17 @@ document.addEventListener('DOMContentLoaded', () => {
   let rowIndex = 0                                  // create a variable for where the row index will start..e.g. the first row
   const rows = document.querySelectorAll('.row')    // grab all rows and save to variable
   let currentRow = rows[rowIndex]                   // new variable --- of all the rows saved in 'rows', what is the index of the current row
-  currentRow.classList.add('active')                // to that 'currentRow' add a class of active
+  currentRow.classList.add('activeRow')                // to that 'currentRow' add a class of active
 
 
 
   allSpaces.forEach(element => {                      // for each space div within the 'allspaces' array
     element.addEventListener('click', (e) => {        //  add a click eventlistener
-      if (!e.target.parentNode.classList.contains('active')) {      // if the parent of the element clicked DOESN'T have the class of active..
+      if (!e.target.parentNode.classList.contains('activeRow')) {      // if the parent of the element clicked DOESN'T have the class of active..
         return false                                                // do nothing
       } else {
         currentSpace = e.target                                   // else return the info from the button clicked -- save it to currentSpace variable
-        currentSpace.classList.add('active')                      // add a class of 'active' to the 'currentSpace' identified above
+        currentSpace.classList.add('activeCircle')                      // add a class of 'active' to the 'currentSpace' identified above
       }
     })
   })
@@ -112,9 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //       determine color result
     const colorResult = userGuess.map((element, i) => {     // .map move over each element and index in the userGuess array
       if (element === computerRandomCode[i]) {              // if current element equals computerRandomCode, (current index)
-        return 'red'
+        return 'green'
       } else if (computerRandomCode.includes(element)) {        // if computerRandomCode includes the current element in any location
-        return 'white'
+        return 'orange'
       } else
         return ''
     })
@@ -128,57 +122,64 @@ document.addEventListener('DOMContentLoaded', () => {
     resultAreaThreeDOM.innerText = shuffledResult[2]
     resultAreaFourDOM.innerText = shuffledResult[3]
 
-    if (resultAreaOneDOM === 'red' && resultAreaTwoDOM === 'red' && resultAreaThreeDOM === 'red' && resultAreaFourDOM === 'red') {
+    if (resultAreaOneDOM === 'green' && resultAreaTwoDOM === 'green' && resultAreaThreeDOM === 'green' && resultAreaFourDOM === 'green') {
       winner.className = ''
     }
 
     // ***************    change color via class list change based on inner text
     // Result box one
-    if (resultAreaOneDOM.innerText === 'red') {
-      resultAreaOneDOM.classList.add('red')
+    if (resultAreaOneDOM.innerText === 'green') {
+      resultAreaOneDOM.classList.add('green')
       resultAreaOneDOM.innerText = ''
-    } else if (resultAreaOneDOM.innerText === 'white') {
-      resultAreaOneDOM.classList.add('white')
+    } else if (resultAreaOneDOM.innerText === 'orange') {
+      resultAreaOneDOM.classList.add('orange')
       resultAreaOneDOM.innerText = ''
     }
 
     // Result box two
-    if (resultAreaTwoDOM.innerText === 'red') {
-      resultAreaTwoDOM.classList.add('red')
+    if (resultAreaTwoDOM.innerText === 'green') {
+      resultAreaTwoDOM.classList.add('green')
       resultAreaTwoDOM.innerText = ''
-    } else if (resultAreaTwoDOM.innerText === 'white') {
-      resultAreaTwoDOM.classList.add('white')
+    } else if (resultAreaTwoDOM.innerText === 'orange') {
+      resultAreaTwoDOM.classList.add('orange')
       resultAreaTwoDOM.innerText = ''
     }
 
     // Result box three
-    if (resultAreaThreeDOM.innerText === 'red') {
-      resultAreaThreeDOM.classList.add('red')
+    if (resultAreaThreeDOM.innerText === 'green') {
+      resultAreaThreeDOM.classList.add('green')
       resultAreaThreeDOM.innerText = ''
-    } else if (resultAreaThreeDOM.innerText === 'white') {
-      resultAreaThreeDOM.classList.add('white')
+    } else if (resultAreaThreeDOM.innerText === 'orange') {
+      resultAreaThreeDOM.classList.add('orange')
       resultAreaThreeDOM.innerText = ''
     }
 
     // Result box four
-    if (resultAreaFourDOM.innerText === 'red') {
-      resultAreaFourDOM.classList.add('red')
+    if (resultAreaFourDOM.innerText === 'green') {
+      resultAreaFourDOM.classList.add('green')
       resultAreaFourDOM.innerText = ''
-    } else if (resultAreaFourDOM.innerText === 'white') {
-      resultAreaFourDOM.classList.add('white')
+    } else if (resultAreaFourDOM.innerText === 'orange') {
+      resultAreaFourDOM.classList.add('orange')
       resultAreaFourDOM.innerText = ''
     }
 
 
 
     // winner box when 4 reds
-    if (resultAreaOneDOM.classList.contains('red') &&
-        resultAreaTwoDOM.classList.contains('red') &&
-        resultAreaThreeDOM.classList.contains('red') &&
-        resultAreaFourDOM.classList.contains('red')
+    if (resultAreaOneDOM.classList.contains('green') &&
+        resultAreaTwoDOM.classList.contains('green') &&
+        resultAreaThreeDOM.classList.contains('green') &&
+        resultAreaFourDOM.classList.contains('green')
     ) {
       winner.classList.remove('hidden')
+    } else {
+      currentRow.classList.remove('activeRow')
+      rowIndex++
+      currentRow = rows[rowIndex]
+      currentRow.classList.add('activeRow')
     }
+
+
 
 
   })
