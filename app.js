@@ -4,21 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const computerRandomCode = []
   let counter = 0
 
-  const userGuessOne = document.querySelector('.userGuessOne')
-  const userGuessTwo = document.querySelector('.userGuessTwo')
-  const userGuessThree = document.querySelector('.userGuessThree')
-  const userGuessFour = document.querySelector('.userGuessFour')
-
-  const resultAreaOneDOM = document.querySelector('.resultAreaOne')
-  const resultAreaTwoDOM = document.querySelector('.resultAreaTwo')
-  const resultAreaThreeDOM = document.querySelector('.resultAreaThree')
-  const resultAreaFourDOM = document.querySelector('.resultAreaFour')
-
   const allSpaces = document.querySelectorAll('.gameBoard div')     // target all the div within the gameBoard container div
   const userSelectButtonsDOM = document.querySelectorAll('.userSelectButtons div')
 
   const allSubmitBoxes = document.querySelectorAll('.submitGuess')  // all divs with the class of .submitGuess
   const winner = document.querySelector('#winner')
+  const loser = document.querySelector('#loser')
 
   let currentSpace = allSpaces[0]
 
@@ -30,12 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentRow = rows[rowIndex]                   // new variable --- of all the rows saved in 'rows', what is the index of the current row
   currentRow.classList.add('activeRow')                // to that 'currentRow' add a class of active
   let currentResultsArea = allResultsAreas[rowIndex]
-
-
-
-
-
-
 
 
 
@@ -74,16 +59,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
   // EVENT LISTENERS *************************************************
 
   // listener on every space... only to work if the containing parent has the class of activeRow
@@ -109,17 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
 
-
-
-
-
-
-
-
-
-
-
-
   allSubmitBoxes.forEach(element => {         // on submit
     element.addEventListener('click', (e) => {
       if (!e.target.parentNode.classList.contains('activeRow')) {      // if the parent of the element clicked DOESN'T have the class of active..
@@ -129,20 +93,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const userGuessArray = Array.from(currentRow.children)
 
-
-
-        // **********************************************
-
-
-        userGuess = [userGuessArray[0].className,userGuessArray[1].className,userGuessArray[2].className,userGuessArray[3].className]   // add all class names to userGuess array
-        // console.log('the user guess is ' + userGuess)
+        userGuess = [   // add all class names to userGuess array
+          userGuessArray[0].className,
+          userGuessArray[1].className,
+          userGuessArray[2].className,
+          userGuessArray[3].className
+        ]
 
         console.log('user guess is ' + userGuess)
-        // ***********************************************
-
-
-
-
 
         //       determine color result
         const colorResult = userGuess.map((element, i) => {     // .map move over each element and index in the userGuess array
@@ -157,12 +115,6 @@ document.addEventListener('DOMContentLoaded', () => {
         //       shuffle the color result
         const shuffledResult = shuffle(colorResult)
         console.log('the shuffled result is ' + shuffledResult)
-
-
-
-
-
-
 
 
         // send the shuffledResult to the currentResultsArea
@@ -182,11 +134,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        if (resultAreaOneDOM.classList.contains('green') &&
-        resultAreaTwoDOM.classList.contains('green') &&
-        resultAreaThreeDOM.classList.contains('green') &&
-        resultAreaFourDOM.classList.contains('green')
-        ) {
+        if (results[0].classList.contains('green') &&
+          results[1].classList.contains('green') &&
+          results[2].classList.contains('green') &&
+          results[3].classList.contains('green')) {
           winner.classList.remove('hidden')
         } else {
           currentRow.classList.remove('activeRow')
@@ -194,12 +145,28 @@ document.addEventListener('DOMContentLoaded', () => {
           currentRow = rows[rowIndex]
           currentRow.classList.add('activeRow')             // update activeRow
           currentResultsArea = allResultsAreas[rowIndex]    // update currentResultsArea
-          
         }
+
+        // const finalSubmitButton = document.querySelector('#finalSubmit')
+        //
+        // finalSubmitButton.addEventListener('click', () => {
+        //   if (results[0].classList.contains('green') &&
+        //   results[1].classList.contains('green') &&
+        //   results[2].classList.contains('green') &&
+        //   results[3].classList.contains('green')) {
+        //     winner.classList.remove('hidden')
+        //   } else {
+        //     loser.classList.remove('hidden')
+        //   }
+        // })
+
+
+
 
       }
     })
   })
+
 
 
 
