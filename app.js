@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   let userGuess = []
-  const computerRandomCode = []
+  let computerRandomCode = []
   let counter = 0
 
-  const allSpaces = document.querySelectorAll('.gameBoard div')     // target all the div within the gameBoard container div
+  const allSpaces = document.querySelectorAll('.gameBoard div div')     // target all the div within the gameBoard container div
   const userSelectButtonsDOM = document.querySelectorAll('.userSelectButtons div')
 
   const allSubmitBoxes = document.querySelectorAll('.submitGuess')  // all divs with the class of .submitGuess
@@ -14,6 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentSpace = allSpaces[0]
 
   const allResultsAreas = document.querySelectorAll('.resultsContainer')
+
+  const playAgainButtons = document.querySelectorAll('.playAgainButton')
 
   // HIGHLIGHT CURRENT ACTIVE ROW
   let rowIndex = 0                                  // create a variable for where the row index will start..e.g. the first row
@@ -82,22 +84,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   allSubmitBoxes.forEach(element => {         // on submit
     element.addEventListener('click', (e) => {
       if (!e.target.parentNode.classList.contains('activeRow')) {      // if the parent of the element clicked DOESN'T have the class of active..
@@ -128,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const shuffledResult = shuffle(colorResult)
 
-        console.log('the result is ' + colorResult)     // result
+        // console.log('the result is ' + colorResult)     // result
         console.log('the shuffled result is ' + shuffledResult)   // shuffle the result
 
         const winCase = shuffledResult.every(element => element === 'green')  // if all four items 'green' = winCase
@@ -153,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
           winner.classList.remove('hidden')
         } else if (rowIndex === 9 & !winCase) {
           loser.classList.remove('hidden')
+          currentRow.classList.remove('activeRow')
         } else {
           currentRow.classList.remove('activeRow')
           rowIndex++
@@ -180,7 +167,23 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   })
 
+  playAgainButtons.forEach(element => {
 
+    element.addEventListener('click', () => {
+      // allSpaces.classList.add('space')
+      loser.classList.add('hidden')
+      winner.classList.add('hidden')
+      counter = 0
+      rowIndex = 0
+      currentRow = rows[rowIndex]
+      computerRandomCode = []
+      getComputerRandomCodeFunction()
+      console.log('computer random code ' + computerRandomCode)    // call getComputerRandomCodeFunction
+      currentRow.classList.add('activeRow')
+      currentResultsArea = allResultsAreas[rowIndex]
+
+    })
+  })
 
 
 

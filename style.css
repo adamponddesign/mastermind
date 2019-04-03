@@ -154,9 +154,9 @@ h1 {
 
 /*****************  WINNER BOX *********************/
 #winner {
-  display: flex;
-  font-size: 39px;
-  background-color: red;
+  padding-top: 10px;
+  font-size: 30px;
+  background-color: grey;
   border: 5px solid yellow;
   text-align: center;
   height: 20%;
@@ -171,8 +171,8 @@ h1 {
 
 /*****************  LOSER BOX *********************/
 #loser {
-  display: flex;
-  font-size: 39px;
+  padding-top: 10px;
+  font-size: 30px;
   color: white;
   background-color: black;
   border: 5px solid yellow;
@@ -184,4 +184,11 @@ h1 {
   left: 0;
   align-items: center;
   justify-content: center;
+}
+
+
+.playAgainButton {
+  background-color: red;
+  margin-top: 20px;
+  font-size: 25px;
 }
