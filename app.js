@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // EVENT LISTENERS *************************************************
 
   // listener on every space... only to work if the containing parent has the class of activeRow
-  allSpaces.forEach(element => {                      // for each space div within the 'allspaces' array
+  allSpacesBoard.forEach(element => {                      // for each space div within the 'allspaces' array
     element.addEventListener('click', (e) => {        //  add a click eventlistener
       if (!e.target.parentNode.classList.contains('activeRow')) {      // if the parent of the element clicked DOESN'T have the class of active..
         return false                                                // do nothing
