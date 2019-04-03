@@ -26,6 +26,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+  const allSpacesArray = Array.from(allSpaces)
+
+  const row1 = allSpacesArray.slice(0, 4)
+  const row2 = allSpacesArray.slice(10, 14)
+  const row3 = allSpacesArray.slice(20, 24)
+  const row4 = allSpacesArray.slice(30, 34)
+  const row5 = allSpacesArray.slice(40, 44)
+  const row6 = allSpacesArray.slice(50, 54)
+  const row7 = allSpacesArray.slice(60, 64)
+  const row8 = allSpacesArray.slice(70, 74)
+  const row9 = allSpacesArray.slice(80, 84)
+  const row10 = allSpacesArray.slice(90, 94)
+
+  const allSpacesBoard = row1.concat(row2, row3, row4, row5, row6, row7, row8, row9, row10)
+
+
+
 
   // FUNCTIONS *******************************************************************
   function shuffle(array) {  // fisher-Yates shuffle function
@@ -75,8 +92,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // THIS GETS THE CLASS NAME FROM THE USER SELECT BUTTON CLICKED, AND SETS IT TO THE TARGET ELEMENT SET ABOVE (currentSpace's class name)
   userSelectButtonsDOM.forEach(element => {                 // for each element in the userSelectButtons array (4 empty divs)
     element.addEventListener('click', (e) => {                //add a 'click' event to each div
-      const userPick = e.target.className                     // add the classname of the button clicked to the variable userPickOne
-      currentSpace.className = userPick                     // add the button clicked's classname (userPick) to the currentSpace's classname
+      const userPick = e.target.classList                     // add the classname of the button clicked to the variable userPickOne
+      currentSpace.classList = userPick                   // add the button clicked's classname (userPick) to the currentSpace's classname
 
     })
   })
@@ -151,15 +168,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        // const finalSubmitButton = document.querySelector('#finalSubmit')
-        //
-        // finalSubmitButton.addEventListener('click', () => {
-        //   if (winCase) {
-        //     winner.classList.remove('hidden')
-        //   } else {
-        //     loser.classList.remove('hidden')
-        //   }
-        // })
+        const finalSubmitButton = document.querySelector('#finalSubmit')
+
+        finalSubmitButton.addEventListener('click', () => {
+          if (winCase) {
+            winner.classList.remove('hidden')
+          } else {
+            loser.classList.remove('hidden')
+          }
+        })
 
 
 
@@ -170,7 +187,6 @@ document.addEventListener('DOMContentLoaded', () => {
   playAgainButtons.forEach(element => {
 
     element.addEventListener('click', () => {
-      // allSpaces.classList.add('space')
       loser.classList.add('hidden')
       winner.classList.add('hidden')
       counter = 0
@@ -181,6 +197,27 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log('computer random code ' + computerRandomCode)    // call getComputerRandomCodeFunction
       currentRow.classList.add('activeRow')
       currentResultsArea = allResultsAreas[rowIndex]
+
+
+      allResultsAreas.forEach(element => {
+        const results = Array.from(element.children)
+        results.forEach(result => result.classList.remove('orange', 'green'))
+      })
+
+
+      console.log(rows)
+      rows.forEach(element => {
+        const allSpaces = Array.from(element.children)
+        allSpaces.forEach(element => element.classList.remove('yellow', 'red', 'blue', 'black'))
+        allSpacesBoard.forEach(element => element.classList.add('space'))
+
+      })
+
+
+
+
+
+
 
     })
   })
