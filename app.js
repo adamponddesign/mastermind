@@ -25,8 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
   // FUNCTIONS *******************************************************************
   function shuffle(array) {  // fisher-Yates shuffle function
     let i = array.length
@@ -57,8 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
   // EVENT LISTENERS *************************************************
 
   // listener on every space... only to work if the containing parent has the class of activeRow
@@ -82,6 +78,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     })
   })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   allSubmitBoxes.forEach(element => {         // on submit
@@ -111,10 +125,13 @@ document.addEventListener('DOMContentLoaded', () => {
           } else
             return ''
         })
-        console.log('the result is ' + colorResult)
-        //       shuffle the color result
+
         const shuffledResult = shuffle(colorResult)
-        console.log('the shuffled result is ' + shuffledResult)
+
+        console.log('the result is ' + colorResult)     // result
+        console.log('the shuffled result is ' + shuffledResult)   // shuffle the result
+
+        const winCase = shuffledResult.every(element => element === 'green')  // if all four items 'green' = winCase
 
 
         // send the shuffledResult to the currentResultsArea
@@ -125,20 +142,17 @@ document.addEventListener('DOMContentLoaded', () => {
           if(shuffledResult[index]) {
             element.classList.add(shuffledResult[index])
           }
-          // first element add classlist of shuffledResult index 1
-          // second element add classlist of shuffledResult index 2
+          // first element add classlist of shuffledResult index 1, second element add classlist of shuffledResult index 2
           // because one of the shuffledResult's may be ''... we have to add an 'if' condition
-          // if shuffledResult index 1 it truthy.. carryout the code.
-          // if shuffledResult index 2 is empty this will not pass the condition, and so the code will not be run
+          // if shuffledResult index 1 is truthy.. carryout the code, if not the code will not be run
         })
 
 
 
-        if (results[0].classList.contains('green') &&
-          results[1].classList.contains('green') &&
-          results[2].classList.contains('green') &&
-          results[3].classList.contains('green')) {
+        if (winCase) {
           winner.classList.remove('hidden')
+        } else if (rowIndex === 9 & !winCase) {
+          loser.classList.remove('hidden')
         } else {
           currentRow.classList.remove('activeRow')
           rowIndex++
@@ -147,13 +161,13 @@ document.addEventListener('DOMContentLoaded', () => {
           currentResultsArea = allResultsAreas[rowIndex]    // update currentResultsArea
         }
 
+
+
+
         // const finalSubmitButton = document.querySelector('#finalSubmit')
         //
         // finalSubmitButton.addEventListener('click', () => {
-        //   if (results[0].classList.contains('green') &&
-        //   results[1].classList.contains('green') &&
-        //   results[2].classList.contains('green') &&
-        //   results[3].classList.contains('green')) {
+        //   if (winCase) {
         //     winner.classList.remove('hidden')
         //   } else {
         //     loser.classList.remove('hidden')
@@ -162,14 +176,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
       }
     })
   })
-
-
-
-
 
 
 
