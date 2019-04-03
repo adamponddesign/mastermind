@@ -8,37 +8,43 @@ body {
 
 main {
 
-  height: 100vh;
+  /* height: 100vh; */
   margin: 10px auto;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
   justify-content: center;
+  background-color: #24a2f0;
+}
+header {
+  text-align: center;
 }
 
-h1 {
-  margin: 0;
-  text-align: center;
+header img {
+  display: inline-block;
+  width: 80%;
+
 }
 
 /****************** CLASS STYLING ******************/
 
 .gameBoard {    /* user target selection all divs */
+  padding-top: 15px;
   display: flex;
   flex-wrap: wrap;
-  width: 90%;
-  height: 70%;
+  width: 82%;
+  height: 76%;
 }
 
 .gameBoard div {
-  width: 100%;
+  width: 96%;
   /* border: 1px solid black; */
 }
 
 .row {
   display: flex;
-  width: 70%;
-  height: 11%;
+  /* width: 70%;
+  height: 11%; */
 }
 
 
@@ -74,10 +80,9 @@ h1 {
 
 .userSelectButtons div {   /* select buttons individual divs */
   border-radius: 50%;
-  height: 43px;
-  width: 43px;
-  margin: 15px 7px 0 7px;
-
+  height: 35px;
+  width: 35px;
+  margin: 32px 9px 20px 14px;
 }
 
 .submitGuess {      /* submit guess individual div */
@@ -104,7 +109,7 @@ h1 {
 }
 
 .activeCircle {
-  border:3px solid blue !important;
+  border:3px solid white !important;
 }
 /***************** HIDE CLASS ********************/
 .hidden {
@@ -113,7 +118,7 @@ h1 {
 /*************** COLORS CLASSES *******************/
 
 .green {
-  background-color: green;
+  background-color: #43ff14;
   border-radius: 50%;
 }
 
@@ -127,25 +132,30 @@ h1 {
 
 
 .red {
-  background-color: red;
+  background-image: url('images/red3dBall.png');
+  background-size: cover;
   border-radius: 50%;
   margin: 7px;
 }
 
 .yellow {
-  background-color: yellow;
+  /* background-color: yellow; */
+  background-image: url('images/yellow3dBall.png');
+  background-size: cover;
   border-radius: 50%;
   margin: 7px;
 }
 
 .blue {
-  background-color: blue;
+  background-image: url('images/blue3dBall.png');
+  background-size: cover;
   border-radius: 50%;
   margin: 7px;
 }
 
 .black {
-  background-color: black;
+  background-image: url('images/black3dBall.png');
+  background-size: cover;
   border-radius: 50%;
   margin: 7px;
 }
