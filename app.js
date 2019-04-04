@@ -26,21 +26,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  const allSpacesArray = Array.from(allSpaces)
+  // const allSpacesArray = Array.from(allSpaces)
+  //
+  // const row1 = allSpacesArray.slice(0, 4)
+  // const row2 = allSpacesArray.slice(10, 14)
+  // const row3 = allSpacesArray.slice(20, 24)
+  // const row4 = allSpacesArray.slice(30, 34)
+  // const row5 = allSpacesArray.slice(40, 44)
+  // const row6 = allSpacesArray.slice(50, 54)
+  // const row7 = allSpacesArray.slice(60, 64)
+  // const row8 = allSpacesArray.slice(70, 74)
+  // const row9 = allSpacesArray.slice(80, 84)
+  // const row10 = allSpacesArray.slice(90, 94)
 
-  const row1 = allSpacesArray.slice(0, 4)
-  const row2 = allSpacesArray.slice(10, 14)
-  const row3 = allSpacesArray.slice(20, 24)
-  const row4 = allSpacesArray.slice(30, 34)
-  const row5 = allSpacesArray.slice(40, 44)
-  const row6 = allSpacesArray.slice(50, 54)
-  const row7 = allSpacesArray.slice(60, 64)
-  const row8 = allSpacesArray.slice(70, 74)
-  const row9 = allSpacesArray.slice(80, 84)
-  const row10 = allSpacesArray.slice(90, 94)
-
-  const allSpacesBoard = row1.concat(row2, row3, row4, row5, row6, row7, row8, row9, row10)
-
+  const allSpacesBoard = document.querySelectorAll('.space')
+  allSpacesBoard[0].classList.add('activeCircle')
 
 
 
@@ -82,7 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!e.target.parentNode.classList.contains('activeRow')) {      // if the parent of the element clicked DOESN'T have the class of active..
         return false                                                // do nothing
       } else {
-        currentSpace = e.target                                   // else return the info from the button clicked -- save it to currentSpace variable
+        currentSpace = e.target
+        const allSpaces = currentSpace.parentNode.querySelectorAll('.space')      // else return the info from the button clicked -- save it to currentSpace variable
+        allSpaces.forEach(space => space.classList.remove('activeCircle'))
         currentSpace.classList.add('activeCircle')                      // add a class of 'active' to the 'currentSpace' identified above
       }
     })
@@ -134,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // console.log('the result is ' + colorResult)     // result
         console.log('the shuffled result is ' + shuffledResult)   // shuffle the result
 
-        const winCase = shuffledResult.every(element => element === 'green')  // if all four items 'green' = winCase
 
 
         // send the shuffledResult to the currentResultsArea
@@ -150,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
           // if shuffledResult index 1 is truthy.. carryout the code, if not the code will not be run
         })
 
-
+        const winCase = shuffledResult.every(element => element === 'green')  // if all four items 'green' = winCase
 
         if (winCase) {
           winner.classList.remove('hidden')
@@ -158,31 +159,20 @@ document.addEventListener('DOMContentLoaded', () => {
           loser.classList.remove('hidden')
           currentRow.classList.remove('activeRow')
         } else {
+          currentSpace.classList.remove('activeCircle')
           currentRow.classList.remove('activeRow')
           rowIndex++
           currentRow = rows[rowIndex]
           currentRow.classList.add('activeRow')             // update activeRow
+          currentSpace = currentRow.children[0]
+          currentSpace.classList.add('activeCircle')
           currentResultsArea = allResultsAreas[rowIndex]    // update currentResultsArea
         }
-
-
-
-
-        const finalSubmitButton = document.querySelector('#finalSubmit')
-
-        finalSubmitButton.addEventListener('click', () => {
-          if (winCase) {
-            winner.classList.remove('hidden')
-          } else {
-            loser.classList.remove('hidden')
-          }
-        })
-
-
-
       }
     })
   })
+
+
 
   playAgainButtons.forEach(element => {
 
@@ -213,13 +203,6 @@ document.addEventListener('DOMContentLoaded', () => {
         allSpacesBoard.forEach(element => element.classList.add('space'))
 
       })
-
-
-
-
-
-
-
     })
   })
 

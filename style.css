@@ -34,7 +34,6 @@ header img {
 
 .gameBoard div {
   width: 96%;
-  /* border: 1px solid black; */
 }
 
 .row {
@@ -62,7 +61,7 @@ div.resultsContainer {   /* results boxes all divs */
   display: flex;
   flex-wrap: wrap;
   height: auto;
-  width: 50%;
+  width: 100%;
   align-items: center;
   justify-content: center;
 }
@@ -99,30 +98,37 @@ div.resultsContainer:after {
 }
 
 .submitGuess {      /* submit guess individual div */
+  padding: 2px;
+  font-family: 'Bungee Shade', cursive;
   width: 13%;
-  margin: 4px;
-  margin-left: 5px;
-  border: 1px solid black;
+  margin: 5px 2px 0 4px;
+  border: 1px solid white;
+  border-radius: 5px;
   display: flex;
-  background-color: black;
   text-align: center;
-  font-size: 11px;
-  margin-top: 5px;
-  color: white;
-
+  font-size: 10px;
+  color: black;
   align-items: center;
   justify-content: center;
+  background-color: red;
+  color: white;
+}
+
+.submitGuess:hover {
+  background-color: green;
+  color: white;
 }
 
 
 
 /**************** ACTIVE CLASS *******************/
 .activeRow{
-  background-color: rgba(204,204,204,0.8);
+  background-color: rgba(204,204,204,0.4);
 }
 
 .activeCircle {
-  border:3px solid white !important;
+  border: 3px solid white !important;
+  margin: 6px;
 }
 /***************** HIDE CLASS ********************/
 .hidden {
@@ -149,7 +155,7 @@ div.resultsContainer:after {
   /* background-image: url('images/red3dBall.png');
   background-size: cover; */
   border-radius: 50%;
-  margin: 7px;
+  margin: 9px;
 }
 
 .yellow {
@@ -157,7 +163,7 @@ div.resultsContainer:after {
   /* background-image: url('images/yellow3dBall.png');
   background-size: cover; */
   border-radius: 50%;
-  margin: 7px;
+  margin: 9px;
 }
 
 .blue {
@@ -165,7 +171,7 @@ div.resultsContainer:after {
   /* background-image: url('images/blue3dBall.png');
   background-size: cover; */
   border-radius: 50%;
-  margin: 7px;
+  margin: 9px;
 }
 
 .black {
@@ -173,7 +179,7 @@ div.resultsContainer:after {
   /* background-image: url('images/black3dBall.png');
   background-size: cover; */
   border-radius: 50%;
-  margin: 7px;
+  margin: 9px;
 }
 
 
@@ -218,7 +224,11 @@ div.resultsContainer:after {
   background-color: red;
   margin-top: 20px;
   font-size: 25px;
+  cursor: pointer;
 }
+
+
+
 
 /***************** MEDIA QUERIES *********************/
 
@@ -239,7 +249,7 @@ div.resultsContainer:after {
 }
 
 
-@media only screen and (min-width: 341px){
+@media only screen and (min-width: 341px) and (max-width: 549px){
   div.resultsContainer {
     width: 100%;
   }
@@ -250,36 +260,38 @@ div.resultsContainer:after {
 }
 
 
-@media only screen and (min-width: 550px) {
-
-  .gameBoard { 
-    display: flex;
-    flex-wrap: wrap;
-    width: 54%;
-  }
-}
-
-
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 550px) and (max-width: 991px){
   .gameBoard {
     display: flex;
     flex-wrap: wrap;
-    width: 24%;
-   }
-}
+    width: 30%;
+  }
 
-
-@media only screen and (min-width: 992px) {
   header img {
-    max-width: 300px;
+    max-width: 250px;
   }
 }
 
 
-@media only screen and (min-width: 1440px) {
+
+
+@media only screen and (min-width: 992px) and (max-width: 1540px) {
+  header img {
+    max-width: 350px;
+  }
+
   .gameBoard {
     display: flex;
     flex-wrap: wrap;
-    width: 28%;
+    width: 29%;
+  }
+
+
+  header img {
+    max-width: 350px;
+  }
+
+  div.resultsContainer {
+    width: 100%;
   }
 }
