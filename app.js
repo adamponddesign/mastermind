@@ -162,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
           loser.classList.remove('hidden')
           audio[2].play()
           currentRow.classList.remove('activeRow')
+          currentSpace.classList.remove('activeCircle')
         } else {
           currentSpace.classList.remove('activeCircle')
           currentRow.classList.remove('activeRow')

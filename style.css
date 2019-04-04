@@ -111,7 +111,7 @@ div.resultsContainer:after {
   align-items: center;
   justify-content: center;
   background-color: red;
-  color: white;
+  color: black;
 }
 
 .submitGuess:hover {
@@ -263,31 +263,41 @@ div.resultsContainer:after {
   header img {
     max-width: 250px;
   }
+
+  .userSelectButtons div {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+  }
 }
 
 
-@media only screen and (min-width: 550px) and (max-width: 991px){
+@media only screen and (min-width: 550px) and (max-width: 979px){
   .gameBoard {
     display: flex;
     flex-wrap: wrap;
-    width: 27%;
+    width: 30%;
   }
 
   header img {
     max-width: 250px;
   }
+
+  .submitGuess {
+    font-size: 12px;
+  }
 }
 
 
 
 
-@media only screen and (min-width: 992px) and (max-width: 1540px) {
+@media only screen and (min-width: 980px) and (max-width: 3540px) {
 
 
   .gameBoard {
     display: flex;
     flex-wrap: wrap;
-    width: 29%;
+    width: 23%;
   }
 
 
@@ -296,4 +306,16 @@ div.resultsContainer:after {
   div.resultsContainer {
     width: 100%;
   }
+
+  .userSelectButtons div {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+  }
+
+  .submitGuess {
+    font-size: 15px;
+  }
+
+
 }
