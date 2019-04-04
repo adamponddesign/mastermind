@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
   currentRow.classList.add('activeRow')                // to that 'currentRow' add a class of active
   let currentResultsArea = allResultsAreas[rowIndex]
 
+  const audio = document.querySelectorAll('audio')
+
 
 
   // const allSpacesArray = Array.from(allSpaces)
@@ -155,8 +157,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (winCase) {
           winner.classList.remove('hidden')
+          audio[0].play()
         } else if (rowIndex === 9 & !winCase) {
           loser.classList.remove('hidden')
+          audio[2].play()
           currentRow.classList.remove('activeRow')
         } else {
           currentSpace.classList.remove('activeCircle')
@@ -177,6 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
   playAgainButtons.forEach(element => {
 
     element.addEventListener('click', () => {
+      audio[1].play()
       loser.classList.add('hidden')
       winner.classList.add('hidden')
       counter = 0

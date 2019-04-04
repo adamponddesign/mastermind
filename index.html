@@ -15,9 +15,6 @@
     </header>
     <main>
       <section class="gameBoard">
-
-
-
         <div class="row">
           <div class="space userGuessOne"></div>
           <div class="space userGuessTwo"></div>
@@ -31,9 +28,6 @@
             <div Class="resultsBoxes resultAreaFour"></div>
           </div>
         </div>
-
-
-
         <div class="row">
           <div class="space userGuessOne"></div>
           <div class="space userGuessTwo"></div>
@@ -161,14 +155,20 @@
 
       <div class="hidden" id="winner">
         You Win!
-        <div class="playAgainButton">
+        <audio src="sounds/winJingle.mp3"></audio>
+        <div class="playAgainButton"><audio src="sounds/restartJingle.mp3">
+
+        </audio>
           Play Again?
         </div>
       </div>
 
       <div class="hidden" id="loser">
         You Lose!
-        <div class="playAgainButton">
+        <audio src="sounds/loseJingle.mp3"></audio>
+        <div class="playAgainButton"><audio src="sounds/restartJingle.mp3">
+
+        </audio>
           Play Again?
         </div>
       </div>

@@ -93,8 +93,8 @@ div.resultsContainer:after {
 
 .userSelectButtons div {   /* select buttons individual divs */
   border-radius: 50%;
-  height: 35px;
-  width: 35px;
+  height: 30px;
+  width: 30px;
 }
 
 .submitGuess {      /* submit guess individual div */
@@ -187,15 +187,17 @@ div.resultsContainer:after {
 
 /*****************  WINNER BOX *********************/
 #winner {
+  margin: 0 auto;
+  font-family: 'Bungee Shade', cursive;
   padding-top: 10px;
-  font-size: 30px;
-  background-color: grey;
-  border: 5px solid yellow;
+  font-size: 50px;
+  background-color: green;
+  color: white;
   text-align: center;
-  height: 20%;
+  height: 100%;
   width: 100%;
   position: absolute;
-  top: 194px;
+  /* top: 194px; */
   left: 0;
   align-items: center;
   justify-content: center;
@@ -204,16 +206,17 @@ div.resultsContainer:after {
 
 /*****************  LOSER BOX *********************/
 #loser {
+  margin: 0 auto;
+  font-family: 'Bungee Shade', cursive;
   padding-top: 10px;
-  font-size: 30px;
+  font-size: 50px;
   color: white;
   background-color: black;
-  border: 5px solid yellow;
   text-align: center;
-  height: 20%;
+  height: 100%;
   width: 100%;
   position: absolute;
-  top: 194px;
+  /* top: 194px; */
   left: 0;
   align-items: center;
   justify-content: center;
@@ -222,8 +225,11 @@ div.resultsContainer:after {
 
 .playAgainButton {
   background-color: red;
-  margin-top: 20px;
-  font-size: 25px;
+  padding: 10px;
+  border-radius: 15px;
+  margin: 30px auto;
+  font-size: 24px;
+  width: 46%;
   cursor: pointer;
 }
 
@@ -264,7 +270,7 @@ div.resultsContainer:after {
   .gameBoard {
     display: flex;
     flex-wrap: wrap;
-    width: 30%;
+    width: 27%;
   }
 
   header img {
@@ -276,9 +282,7 @@ div.resultsContainer:after {
 
 
 @media only screen and (min-width: 992px) and (max-width: 1540px) {
-  header img {
-    max-width: 350px;
-  }
+
 
   .gameBoard {
     display: flex;
@@ -287,9 +291,7 @@ div.resultsContainer:after {
   }
 
 
-  header img {
-    max-width: 350px;
-  }
+
 
   div.resultsContainer {
     width: 100%;
