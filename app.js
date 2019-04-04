@@ -191,6 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
       winner.classList.add('hidden')
       counter = 0
       rowIndex = 0
+      currentRow.classList.remove('activeRow')
       currentRow = rows[rowIndex]
       computerRandomCode = []
       getComputerRandomCodeFunction()

@@ -7,14 +7,12 @@ body {
 }
 
 main {
-
-  /* height: 100vh; */
-  margin: 10px auto;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
   justify-content: center;
   background-color: #24a2f0;
+  height: 100%;
 }
 header {
   text-align: center;
@@ -22,18 +20,16 @@ header {
 
 header img {
   display: inline-block;
-  width: 80%;
+  /* max-height: 100%; */
 
 }
 
 /****************** CLASS STYLING ******************/
 
 .gameBoard {    /* user target selection all divs */
-  padding-top: 15px;
   display: flex;
   flex-wrap: wrap;
-  width: 82%;
-  height: 76%;
+  width: 76%;
 }
 
 .gameBoard div {
@@ -52,37 +48,54 @@ header img {
   border: 1px solid black;
   border-radius: 50%;
   margin: 7px;
+  height: auto;
 }
 
-.resultsContainer {   /* results boxes all divs */
+.space:after {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
+}
+
+div.resultsContainer {   /* results boxes all divs */
   margin-top: 2px;
   display: flex;
   flex-wrap: wrap;
-  height: 44px;
-  width: 48px;
+  height: auto;
+  width: 50%;
   align-items: center;
   justify-content: center;
 }
 
+div.resultsContainer:after {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
+}
+
 .resultsContainer div {    /* results boxes individual divs */
   border-radius: 50%;
-  width: 15px;
-  height: 15px;
+  width: 30%;
+  height: auto;
   border: 1px solid black;
   margin: 2px;
+}
+
+.resultsContainer div:after {
+  content: '';
+  display: block;
+  padding-bottom: 100%;
 }
 
 
 .userSelectButtons {    /* select buttons all divs */
   display: flex;
-  width: 100%;
 }
 
 .userSelectButtons div {   /* select buttons individual divs */
   border-radius: 50%;
   height: 35px;
   width: 35px;
-  margin: 32px 9px 20px 14px;
 }
 
 .submitGuess {      /* submit guess individual div */
@@ -132,30 +145,33 @@ header img {
 
 
 .red {
-  background-image: url('images/red3dBall.png');
-  background-size: cover;
+  background-color: red;
+  /* background-image: url('images/red3dBall.png');
+  background-size: cover; */
   border-radius: 50%;
   margin: 7px;
 }
 
 .yellow {
-  /* background-color: yellow; */
-  background-image: url('images/yellow3dBall.png');
-  background-size: cover;
+  background-color: yellow;
+  /* background-image: url('images/yellow3dBall.png');
+  background-size: cover; */
   border-radius: 50%;
   margin: 7px;
 }
 
 .blue {
-  background-image: url('images/blue3dBall.png');
-  background-size: cover;
+  background-color: blue;
+  /* background-image: url('images/blue3dBall.png');
+  background-size: cover; */
   border-radius: 50%;
   margin: 7px;
 }
 
 .black {
-  background-image: url('images/black3dBall.png');
-  background-size: cover;
+  background-color: black;
+  /* background-image: url('images/black3dBall.png');
+  background-size: cover; */
   border-radius: 50%;
   margin: 7px;
 }
@@ -202,4 +218,68 @@ header img {
   background-color: red;
   margin-top: 20px;
   font-size: 25px;
+}
+
+/***************** MEDIA QUERIES *********************/
+
+@media only screen and (max-width: 340px){
+  div.resultsContainer {
+    width: 100%;
+  }
+
+  header img {
+    max-width: 200px;
+  }
+
+  .userSelectButtons div {
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+  }
+}
+
+
+@media only screen and (min-width: 341px){
+  div.resultsContainer {
+    width: 100%;
+  }
+
+  header img {
+    max-width: 250px;
+  }
+}
+
+
+@media only screen and (min-width: 550px) {
+
+  .gameBoard { 
+    display: flex;
+    flex-wrap: wrap;
+    width: 54%;
+  }
+}
+
+
+@media only screen and (min-width: 768px) {
+  .gameBoard {
+    display: flex;
+    flex-wrap: wrap;
+    width: 24%;
+   }
+}
+
+
+@media only screen and (min-width: 992px) {
+  header img {
+    max-width: 300px;
+  }
+}
+
+
+@media only screen and (min-width: 1440px) {
+  .gameBoard {
+    display: flex;
+    flex-wrap: wrap;
+    width: 28%;
+  }
 }
