@@ -1,7 +1,3 @@
-# project-01
-Mastermind Javascript Game
-
-
 # General Assembly Project 1 : Simple Front-End Game
 
 ### Timeframe
@@ -25,7 +21,7 @@ Mastermind is my own re-creation of the classic 1970's board game. The aim of th
 
 ![Masterind-header-screenshot](https://user-images.githubusercontent.com/47188720/55615363-2dac9f80-5787-11e9-960f-e16e6833a04f.png)
 
-You can find a hosted version here ---->    _Link to live site_
+You can find a hosted version here - https://adamponddesign.github.io/project-01/
 
 
 
