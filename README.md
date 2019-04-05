@@ -49,6 +49,11 @@ You can find a hosted version here - https://adamponddesign.github.io/project-01
 Once the 'Guess' button is clicked, the player receives feedback on their guess in the results on the right side of the board.
 
 ![gameplayimage3](https://user-images.githubusercontent.com/47188720/55617876-0953c180-578d-11e9-815c-23e870dba839.png)
+
+
+
+
+
 5. Results Key
  * Green Circle = correct colour, correct location
   * Orange Circle = correct colour, incorrect location
