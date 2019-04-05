@@ -286,8 +286,6 @@ div.resultsContainer:after {
 
 
 @media only screen and (min-width: 980px) and (max-width: 3540px) {
-
-
   .gameBoard {
     display: flex;
     flex-wrap: wrap;
@@ -310,6 +308,4 @@ div.resultsContainer:after {
   .submitGuess {
     font-size: 15px;
   }
-
-
 }
