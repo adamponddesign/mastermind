@@ -62,7 +62,7 @@ Once the 'Guess' button is clicked, the player receives feedback on their guess 
 
   The results colours are placed randomly in the results area, so the player must determine which of their choices equates to which result indicator.
 
-6. The player has 10 attempts to correctly guess the computer code.
+6. The row selector is automatically moved down, and the player can make another guess. The player has 10 attempts to correctly guess the computer code.
 
 
 
