@@ -33,7 +33,7 @@ header img {
 }
 
 .gameBoard div {
-  width: 96%;
+  width: 100%;
 }
 
 .row {
@@ -147,41 +147,29 @@ div.resultsContainer:after {
 }
 
 
-
-
-
 .red {
   background-color: red;
-  /* background-image: url('images/red3dBall.png');
-  background-size: cover; */
   border-radius: 50%;
-  margin: 9px;
+  margin: 8px;
 }
 
 .yellow {
   background-color: yellow;
-  /* background-image: url('images/yellow3dBall.png');
-  background-size: cover; */
   border-radius: 50%;
-  margin: 9px;
+  margin: 8px;
 }
 
 .blue {
   background-color: blue;
-  /* background-image: url('images/blue3dBall.png');
-  background-size: cover; */
   border-radius: 50%;
-  margin: 9px;
+  margin: 8px;
 }
 
 .black {
   background-color: black;
-  /* background-image: url('images/black3dBall.png');
-  background-size: cover; */
   border-radius: 50%;
-  margin: 9px;
+  margin: 8px;
 }
-
 
 
 
@@ -252,6 +240,12 @@ div.resultsContainer:after {
     height: 25px;
     width: 25px;
   }
+
+  .gameBoard {
+    display: flex;
+    flex-wrap: wrap;
+    width: 72%;
+  }
 }
 
 
@@ -309,8 +303,8 @@ div.resultsContainer:after {
 
   .userSelectButtons div {
     border-radius: 50%;
-    height: 60px;
-    width: 60px;
+    height: 40px;
+    width: 40px;
   }
 
   .submitGuess {

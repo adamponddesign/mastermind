@@ -27,20 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const audio = document.querySelectorAll('audio')
 
 
-
-  // const allSpacesArray = Array.from(allSpaces)
-  //
-  // const row1 = allSpacesArray.slice(0, 4)
-  // const row2 = allSpacesArray.slice(10, 14)
-  // const row3 = allSpacesArray.slice(20, 24)
-  // const row4 = allSpacesArray.slice(30, 34)
-  // const row5 = allSpacesArray.slice(40, 44)
-  // const row6 = allSpacesArray.slice(50, 54)
-  // const row7 = allSpacesArray.slice(60, 64)
-  // const row8 = allSpacesArray.slice(70, 74)
-  // const row9 = allSpacesArray.slice(80, 84)
-  // const row10 = allSpacesArray.slice(90, 94)
-
   const allSpacesBoard = document.querySelectorAll('.space')
   allSpacesBoard[0].classList.add('activeCircle')
 
