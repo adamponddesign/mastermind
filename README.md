@@ -28,7 +28,7 @@ You can find a hosted version here - https://adamponddesign.github.io/project-01
 
 
 
-### Game Instructions
+## Game Instructions
 
 1. Upon page load the first player guess circle is highlighted.
 
@@ -80,10 +80,10 @@ I then adjusted the logic to use colours rather than numbers.
 Upon completion of my game board, I added in some media breakpoints so that the game would display correctly on multiple screen sizes and devices.
 
 
-### Challenges
+## Challenges
  Once I had completed the logic for one line of code, I initially struggled to carry that logic on throughout the game.  I also had some issues with the selection rows and highlighted circles not behaving as expected.
 
-### Wins
+## Wins
 Big wins for me in this project were
 * Building on my knowledge of array methods
 * Improving my troubleshooting skills
