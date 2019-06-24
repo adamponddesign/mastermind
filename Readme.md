@@ -1,21 +1,22 @@
-# General Assembly Project 1 : Simple Front-End Game
+# Mastermind : Simple Front-End Game
+## General Assembly Project 1
 
 ### Timeframe
 7 days
 
-## Technologies used
+### Technologies used
 
 * JavaScript (ES6)
 * HTML5 + HTML5 Audio
 * CSS
 * Git
 
-## Installation
+### Installation
 
 1. Clone or download the repo
 1. Open the `index.html` in your browser of choice
 
-## Game overview
+### Game overview
 
 Mastermind is my own re-creation of the classic 1970's board game. The aim of the game is to guess the 4 colour code that has been randomly created by the computer.
 
@@ -28,7 +29,7 @@ You can find a hosted version here - https://adamponddesign.github.io/mastermind
 
 
 
-## Game Instructions
+### Game Instructions
 
 1. Upon page load the first player guess circle is highlighted.
 
@@ -66,7 +67,7 @@ Once the 'Guess' button is clicked, the player receives feedback on their guess 
 
 
 
-## Process
+### Process
 Prior to coding, I utilised an online task manager (Trello), and sudo code to break the project down to achievable chunks.
 
 I initially worked on the logic side of the game, using numbers for the code rather than colours, as I found numbers easier to work with and generate.
@@ -80,10 +81,10 @@ I then adjusted the logic to use colours rather than numbers.
 Upon completion of my game board, I added in some media breakpoints so that the game would display correctly on multiple screen sizes and devices.
 
 
-## Challenges
+### Challenges
  Once I had completed the logic for one line of code, I initially struggled to carry that logic on throughout the game.  I also had some issues with the selection rows and highlighted circles not behaving as expected.
 
-## Wins
+### Wins
 Big wins for me in this project were
 * Building on my knowledge of array methods
 * Improving my troubleshooting skills
@@ -91,5 +92,5 @@ Big wins for me in this project were
 * Achieving a full board reset upon conclusion of the game.
 
 
-## Future features
+### Future features
 In the future I would like to add a game timer/countdown, and varying difficulty levels with more colour options and longer code lengths.  I would also like to include an introduction screen detailing the game rules.
