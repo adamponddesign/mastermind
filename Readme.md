@@ -1,4 +1,4 @@
-# Mastermind : Simple Front-End Game
+# Mastermind (Simple Front-End Game)
 ## General Assembly Project 1
 
 ### Timeframe
