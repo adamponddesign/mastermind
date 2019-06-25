@@ -1,5 +1,5 @@
 # Mastermind (Simple Front-End Game)
-## General Assembly Project 1
+## ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) General Assembly Project 1
 
 ### Timeframe
 7 days
