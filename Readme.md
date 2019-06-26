@@ -93,4 +93,7 @@ Big wins for me in this project were
 
 
 ### Future features
-In the future I would like to add a game timer/countdown, and varying difficulty levels with more colour options and longer code lengths.  I would also like to include an introduction screen detailing the game rules.
+In the future I would like to add 
+* a game timer/countdown
+* varying difficulty levels with more colour options and longer code lengtha
+* An introduction screen detailing the game rules.
